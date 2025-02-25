@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Stake Empire</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- First Pop-up -->
+    <div id="popup1" class="popup">
+        <div class="popup-content">
+            <h2>🚨 IMPORTANT 🚨</h2>
+            <p>This tool is created by "Stake Gtoast" for high winnings, click on the Join Telegram button 💰!</p>
+            <p>"यह Tool Stakegtoast 🕷 द्वारा बनाया गया है। अच्छे जीत के लिए Join Telegram बटन पर क्लिक करें 💰!"</p>
+            <div class="btn" onclick="hidePopup()">JOIN TELEGRAM</div>
+            <button class="btn-2"> HOW TO USE</button>
+        </div>
+    </div>
+
+    <!-- Second Pop-up -->
+    <div class="container">
+        <!-- Banner Section -->
+        <div class="banner">
+            
+                <img src="./assets/thumbnail_2.jpg" alt="Win Your First 1000/-">
+            <button class="watch-btn" onclick="goToPage('watch-now.html')">Watch Now</button>
+        </div>
+    
+    
+        <!-- Game Cards -->
+        <div class="game-grid">
+            <div class="game-card" onclick="goToPage('dragon-tower.html')">
+               <a href="dragon.html"> <img src="/assets/dragon.jpeg" alt="Dragon Tower"></a>
+            </div>
+            <div class="game-card" onclick="goToPage('mines.html')">
+              <a href="mines.html"> <img src="/assets/mines.jpeg" alt="Mines"></a> 
+            </div>
+            <div class="game-card" >
+               <a href="crash.html"> <img src="/assets/crash.jpeg" alt="Crash"></a>
+            </div>
+            <div class="game-card" >
+              <a href="dice.html">  <img src="/assets/dice.jpeg" alt="Dice"></a>
+            </div>
+            <div class="game-card" onclick="goToPage('mines.html')">
+               <a href="mines.html"><img src="/assets/mines.jpeg" alt="Mines"></a> 
+            </div>
+            <div class="game-card" onclick="goToPage('dragon-tower.html')">
+              <a href="dragon.html">  <img src="/assets/dragon.jpeg" alt="Dragon Tower"></a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const popup1 = document.getElementById("popup1");
+
+    // Show popup every time the page loads
+    popup1.classList.remove("hidden");
+
+    // Function to hide popup when "JOIN TELEGRAM" is clicked
+    window.hidePopup = function () {
+        popup1.classList.add("hidden");
+    };
+});
+
+
+      
+
+    </script>
+
+</body>
+
+</html>
