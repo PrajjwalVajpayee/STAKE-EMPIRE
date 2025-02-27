@@ -38,12 +38,32 @@ h2 {
     color: red;
     font-size: 20px;
 }
-
+.hacks{
+    font-size: 35px;
+    font-weight: 800;
+    color:#8ad81d
+}
+.hacks-2{
+    font-size: 35px;
+    font-weight: 800;
+    color:#8ad81d;
+    margin-top:10px;
+}
+.up-hacks{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
 p {
     font-size: 16px;
     margin: 10px 0;
 }
-
+.name{
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
 .btn {
     display: block;
     background: linear-gradient(to right, #3b82f6, #1d4ed8);
