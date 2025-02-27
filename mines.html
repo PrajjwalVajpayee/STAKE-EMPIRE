@@ -3,35 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stake Dragon Tower</title>
+    <title>Mines Game with Gems</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background-color: #1a1d21;
-            color: white;
             font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
         }
 
-        .status-bar {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1a1d21;
-        }
-
-        .time {
-            font-size: 14px;
-        }
-
-        .container {
+        .info-card {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: black;
             padding: 20px;
-            
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 400px;
+            z-index: 1000;
+        }
+
+        .info-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        input {
+            width: 70%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 5px;
+            height: 25px;
+
+        }
+        .register-btn {
+            background-color: #00ff00;
+            color: black;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .register-btn:hover {
+            background-color: #32cd32;
         }
 
         .white-card {
@@ -55,99 +79,93 @@
             margin: 15px 0;
         }
 
-        .register-btn {
-            background-color: #00ff00;
-            color: black;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 10px 0;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 80px);
+            grid-template-rows: repeat(4, 80px);
+            gap: 10px;
+            justify-content: center;
+            margin: 10px auto;
         }
 
-        .seed-input {
-            width: 100%;
-            padding: 12px;
-            background-color: transparent;
+        .cell {
+            width: 80px;
+            height: 80px;
+            background-color: #222;
             border: 1px solid #444;
-            border-radius: 4px;
-            color: white;
-            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-      
-
-        .info-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .info-text {
-            color: black;
-            margin-bottom: 20px;
-        }
-
-        .start-btn {
-            background-color: #00ff00;
-            color: black;
+        .gem {
             width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 20px 0;
+            height: 100%;
+            object-fit: contain;
+            animation: pop 0.3s ease-in-out;
         }
 
+        @keyframes pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        button {
+            padding: 8px 15px;
+            font-size: 26px;
+            width: 60%;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: limegreen;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        button:hover {
+            background-color: #32cd32;
+        }
         .footer {
             padding: 20px;
             background-color: #000;
-            position: fixed;
             bottom: 0;
             width: 100%;
         }
 
         .footer p {
-            color: #00ff00;
+            color: white;
             margin: 5px 0;
             font-size: 14px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
-    <div class="status-bar">
-       
+
+    <!-- Popup Window -->
+    <div id="registerPopup" class="info-card">
+        <p class="info-text">Create a new account in STAKE. If you use this mod on an old account, it will not work.<br><br>
+        "Register" बटन पर क्लिक करके एक नया Account बनायें, यदि आप इस मॉड का उपयोग पुराने Account में करेंगे, तो ये मॉड काम नहीं करेगा</p>
+        <a href="https://stake.bet/?offer=ezstake&c=laUqKzcC" target="_blank">
+            <button class="register-btn" onclick="registerUser()">REGISTER NOW</button>
+        </a>
     </div>
 
-    <div class="container">
-        <div class="white-card">
-            <div class="blocl_1">
+    <div class="white-card">
+        <div class="block_1">
             <img src="assets/mines.jpeg" alt="Stake Logo" class="logo">
         </div>
-          <div class="block_2">
-            <h1 class="heading">STAKE DRAGON TOWER SO CLICK ON "REGISTER" AND MAKE YOUR ACCOUNT</h1>
-           <a href="https://stake.bet/?offer=ezstake&c=laUqKzcC"> <button class="register-btn">REGISTER</button></a>
+        <div class="block_2">
+            <h1 class="heading">STAKE DRAGON TOWER - CLICK "REGISTER" TO MAKE YOUR ACCOUNT</h1>
+            <a href="https://stake.bet/?offer=ezstake&c=laUqKzcC">
+                <button class="register-btn">REGISTER</button>
+            </a>
         </div>
-        </div>
-
-        <input type="text" class="seed-input" placeholder="Enter client seed">
-
-        
-            
-
-        <div class="info-card">
-            <p class="info-text">Create new account in STAKE if you use this mod on old Account this mod will not work. "Register" बटन पर क्लिक करके एक नया Account बनायें, यदि आप इस मॉड का उपयोग पुराने Account में करेंगे, तो ये मॉड काम नहीं करेगा</p>
-           <a href="https://stake.bet/?offer=ezstake&c=laUqKzcC" target="_blank"> <button class="register-btn">REGISTER NOW</button></a>
-        </div>
-
-        <button class="start-btn">START</button>
     </div>
+
+    <input type="text" id="seedInput" placeholder="Enter something...">
+    <div class="grid" id="gameGrid"></div>
+    <button onclick="generateGems()">Play</button>
 
     <div class="footer">
         <p>PLAY EASY MODE</p>
@@ -155,5 +173,65 @@
         <p>DONT USE OLD ACCOUNT</p>
         <p>WITHDRAW ON 50% PROFIT</p>
     </div>
+
+    <script>
+        const gridSize = 4;
+        const totalCells = gridSize * gridSize;
+        const gemImageSrc = "gem-none.Bcv6X_BH (1).png"; 
+
+        function createGrid() {
+            const grid = document.getElementById("gameGrid");
+            grid.innerHTML = ""; 
+            
+            for (let i = 0; i < totalCells; i++) {
+                const cell = document.createElement("div");
+                cell.classList.add("cell");
+                cell.dataset.index = i;
+                grid.appendChild(cell);
+            }
+        }
+
+        function generateGems() {
+            const seedInput = document.getElementById("seedInput").value.trim();
+            if (!seedInput) {
+                alert("Please enter a seed!");
+                return;
+            }
+
+            createGrid();
+            let gemCount = Math.random() < 0.5 ? 4 : 5;
+            let placedGems = new Set();
+            
+            while (placedGems.size < gemCount) {
+                let randomIndex = Math.floor(Math.random() * totalCells);
+                if (!placedGems.has(randomIndex)) {
+                    placedGems.add(randomIndex);
+                }
+            }
+
+            placedGems.forEach(index => {
+                let cell = document.querySelector(`.cell[data-index="${index}"]`);
+                let gemImg = document.createElement("img");
+                gemImg.src = gemImageSrc;
+                gemImg.classList.add("gem");
+                cell.appendChild(gemImg);
+            });
+        }
+
+        function registerUser() {
+            localStorage.setItem("isRegistered", "true"); 
+            document.getElementById("registerPopup").style.display = "none"; 
+        }
+
+        function checkPopup() {
+            if (!localStorage.getItem("isRegistered")) {
+                document.getElementById("registerPopup").style.display = "block"; 
+            }
+        }
+
+        window.onload = checkPopup;
+        createGrid();
+    </script>
+
 </body>
 </html>
