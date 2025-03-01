@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Random Number Display</title>
+    <style>
+        body {
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.5s ease;
+            background-color: green; /* Default background */
+        }
+        #message {
+            font-size: 1.5rem;
+            position: absolute;
+            top: 20%;
+            text-align: center;
+            width: 90%;
+            padding: 10px;
+        }
+        #number {
+            font-size: 5rem;
+        }
+        
+        /* Only apply styles if screen width is 768px or less */
+        @media (min-width: 769px) {
+            body {
+                display: none; /* Hide content on larger screens */
+            }
+        }
+    </style>
+</head>
+<body onclick="generateRandomNumber()">
+    <div id="message">Please tap the screen to get the number</div>
+    <div id="number"></div>
+
+    <script>
+        function generateRandomNumber() {
+    const randomNumber = Math.floor(Math.random() * 4) + 1;
+
+    // Different background colors that change randomly
+    const colorOptions = ["#FFDDC1", "#B3E5FC", "#D1C4E9", "#FFF9C4", "#C8E6C9", "#F8BBD0", "#FFECB3", "#BBDEFB"];
+
+    // Shuffle colors to pick a random one each time
+    const randomColor = colorOptions[Math.floor(Math.random() * colorOptions.length)];
+
+    // Hide the instruction text after first tap
+    document.getElementById("message").style.display = "none";
+
+    // Show the number and change the background
+    document.getElementById("number").textContent = randomNumber;
+    document.body.style.backgroundColor = randomColor;
+}
+
+    </script>
+</body>
+</html>
